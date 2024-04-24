@@ -1,4 +1,4 @@
-![Screenshot 2024-04-24 205939](https://github.com/Harsayazheni/DBMS-Expt06/assets/118708467/9b7d4594-c589-4fcb-9539-2da71c83cbf0)# DBMS-Expt06
+# DBMS-Expt06
 
 ## Aim
 To Explore the Advanced Database Techniques in real world application.
