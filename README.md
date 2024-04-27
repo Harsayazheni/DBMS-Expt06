@@ -211,12 +211,23 @@ WHERE
 #### Output
 ![Screenshot 2024-04-24 210105](https://github.com/Harsayazheni/DBMS-Expt06/assets/118708467/099ba780-074d-4477-8b60-e938f0d85c49)
 
-### 10.
+### 10.Write the SQL query that achieves the selection of the "cust_name" column from the "customer" table (aliased as "c"), and the "ord_no," "ord_date," and "purch_amt" columns from the "orders" table (aliased as "o"), with a left join on the "customer_id" column.
+![Screenshot 2024-04-24 205902](https://github.com/Harsayazheni/DBMS-Expt06/assets/118708467/2b34ff1d-6b3a-477f-b5b4-a879be9f64d6)
 
 #### Query
-```
+```SELECT 
+    c.cust_name,
+    o.ord_no,
+    o.ord_date,
+    o.purch_amt
+FROM 
+    customer c
+LEFT JOIN 
+    orders o ON c.customer_id = o.customer_id;
+
 ```
 #### Output
+![Screenshot 2024-04-24 205916](https://github.com/Harsayazheni/DBMS-Expt06/assets/118708467/8b190873-45aa-47e6-93c2-418b43a33ccb)
 
 
 ## Result
