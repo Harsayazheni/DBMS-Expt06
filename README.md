@@ -1,12 +1,63 @@
 # DBMS-Expt06
 
 ## Aim
-To Explore the Advanced Database Techniques in real world application.
+To study and implement different types of joins.
+
+## Theory
+The SQL Joins clause is used to combine records from two or more tables in a database. A JOIN is a means for combining fields from two tables by using values common to each.The join is actually performed by the ‘where’ clause which combines specified rows of tables.
+
+
+Syntax: 
+SELECT column 1, column 2, column 3... 
+FROM table_name1, table_name2 
+WHERE table_name1.column name = table_name2.columnname;
+
+
+Types of Joins:
+Inner Join
+Left (Outer) Join
+Right (Outer) Join
+Full (Outer) Join
+
+
+INNER JOIN
+The INNER JOIN keyword selects records that have matching values in both tables.
+
+
+Syntax:
+SELECT column_name(s)
+FROM table1
+INNER JOIN table2
+ON table1.column_name = table2.column_name;
+LEFT JOIN 
+The LEFT JOIN keyword returns all records from the left table (table1), and the matching records from the right table (table2). The result is 0 records from the right side, if there is no match.
+Syntax:
+SELECT column_name(s)
+FROM table1
+LEFT JOIN table2
+ON table1.column_name = table2.column_name;
+RIGHT JOIN 
+The RIGHT JOIN keyword returns all records from the right table (table2), and the matching records from the left table (table1). The result is 0 records from the left side, if there is no match.
+Syntax:
+SELECT column_name(s)
+FROM table1
+RIGHT JOIN table2
+ON table1.column_name = table2.column_name;
+FULL OUTER JOIN 
+The FULL OUTER JOIN keyword returns all records when there is a match in left (table1) or right (table2) table records.
+FULL OUTER JOIN and FULL JOIN are the same.
+Syntax:
+SELECT column_name(s)
+FROM table1
+FULL OUTER JOIN table2
+ON table1.column_name = table2.column_name
+WHERE condition;
+
 
 ### 1.From the following tables write a SQL query to display the customer name, customer city, grade, salesman, salesman city. The results should be sorted by ascending customer_id.  
 ![Screenshot 2024-04-24 205759](https://github.com/Harsayazheni/DBMS-Expt06/assets/118708467/056de56b-e231-4acd-9e95-85fd8a141b0a)
 
-#### Program
+#### Query
 ```SELECT c.cust_name, c.city AS city, c.grade, s.name AS Salesman, s.city AS city
 FROM customer c
 JOIN salesman s ON c.salesman_id = s.salesman_id
@@ -19,7 +70,7 @@ ORDER BY c.customer_id ASC;
 ### 2. From the following tables write a SQL query to find salespeople who received commissions of more than 12 percent from the company. Return Customer Name, customer city, Salesman, commission.  
 ![Screenshot 2024-04-24 205819](https://github.com/Harsayazheni/DBMS-Expt06/assets/118708467/95aa1f72-9783-41c7-a979-a894e0d3b7a2)
 
-#### Program
+#### Query
 ```SELECT 
     c.cust_name AS "Customer Name",
     c.city AS "city",
@@ -38,7 +89,7 @@ WHERE
 ### 3.write a SQL query to find the salesperson and customer who reside in the same city. Return Salesman, cust_name and city.
 ![Screenshot 2024-04-24 205839](https://github.com/Harsayazheni/DBMS-Expt06/assets/118708467/5f1284e1-7b72-43ea-aecc-c7ab0c888a35)
 
-#### Program
+#### Query
 ```SELECT 
     s.name AS "Salesman",
     c.cust_name,
@@ -55,7 +106,7 @@ JOIN
 ### 4.Write the SQL query that achieves the selection of the "cust_name" column from the "customer" table (aliased as "c"), and the "ord_no," "ord_date," and "purch_amt" columns from the "orders" table (aliased as "o"), with a left join on the "customer_id" column.
 ![Screenshot 2024-04-24 205902](https://github.com/Harsayazheni/DBMS-Expt06/assets/118708467/2b34ff1d-6b3a-477f-b5b4-a879be9f64d6)
 
-#### Program
+#### Query
 ```SELECT 
     c.cust_name,
     o.ord_no,
@@ -73,7 +124,7 @@ LEFT JOIN
 ### 5.Write the SQL query that achieves the selection of all columns from the "nurses" table (aliased as "n") and the "department_name" column from the "departments" table, with an inner join on the "department_id" column.
 ![Screenshot 2024-04-24 205931](https://github.com/Harsayazheni/DBMS-Expt06/assets/118708467/d24c9917-f7fd-41d0-8564-815a7b0fb9db)
 
-#### Program
+#### Query
 ```SELECT 
     n.*,
     d.department_name
@@ -89,7 +140,7 @@ INNER JOIN
 ### 6.Write the SQL query that achieves the selection of the "cust_name" column from the "customer" table (aliased as "c"), with a left join on the "customer_id" column.
 ![Screenshot 2024-04-24 205948](https://github.com/Harsayazheni/DBMS-Expt06/assets/118708467/646303c0-660d-40db-96a9-c2187947c15b)
 
-#### Program
+#### Query
 ```SELECT 
     c.cust_name
 FROM 
@@ -104,7 +155,7 @@ LEFT JOIN
 ### 7.Write the SQL query that achieves the selection of the first name from the "patients" table (aliased as "patient_name"), with an inner join on the "patient_id" column and a condition filtering for test results with the test name 'Blood Pressure'.
 ![Screenshot 2024-04-24 210014](https://github.com/Harsayazheni/DBMS-Expt06/assets/118708467/a2992c7d-51b2-4754-80f0-6e253788bbd5)
 
-#### Program
+#### Query
 ```SELECT 
     p.first_name AS patient_name
 FROM 
@@ -121,7 +172,7 @@ WHERE
 ### 8.From the following tables write a SQL query to locate those salespeople who do not live in the same city where their customers live and have received a commission of more than 12% from the company. Return Customer Name, customer city, Salesman, salesman city, commission.  
 ![Screenshot 2024-04-24 210034](https://github.com/Harsayazheni/DBMS-Expt06/assets/118708467/9215ad18-1a82-4e16-9e91-4a5453834aa4)
 
-#### Program
+#### Query
 ```SELECT 
     c.cust_name AS "Customer Name",
     c.city AS "city",
@@ -143,7 +194,7 @@ WHERE
 ### 9.Write the SQL query that achieves the selection of the first name from the "patients" table and all columns from the "surgeries" table, with an inner join on the "patient_id" column and a condition filtering for patients with a date of birth after '1990-01-01'.
 ![Screenshot 2024-04-24 210056](https://github.com/Harsayazheni/DBMS-Expt06/assets/118708467/7ce9e400-1097-4bed-966e-269941053138)
 
-#### Program
+#### Query
 ```SELECT 
     p.first_name,
     s.surgery_id,
@@ -162,11 +213,11 @@ WHERE
 
 ### 10.
 
-#### Program
+#### Query
 ```
 ```
 #### Output
 
 
 ## Result
-Thus , Advanced Database Techniques in real world application are explored successfully.
+Thus , To study and implement different types of joins is done successfully.
